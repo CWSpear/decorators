@@ -101,7 +101,7 @@ class C {
 ```JavaScript
 function ParamTypes(...types) {
   // as propertyKey is effectively optional, its easier to use here
-  return (target, propertyKey) => { Reflect.defineMetadata(/*metadataKey*/ "design:paramtypes", /*metadataValue*/ types, target, propertyKey); }
+  return (target, propertyKey) => { Reflect.defineMetadata("design:paramtypes", types, target, propertyKey); }
 
   // vs. having multiple overloads with the target and key in the front:
   //
