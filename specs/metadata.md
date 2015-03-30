@@ -363,7 +363,7 @@ When the \[\[DefineOwnMetadata\]\] internal method of a Proxy exotic object <var
 7. [ReturnIfAbrupt][](<var>trap</var>).
 8. If <var>trap</var> is **undefined**, then
   1. Return <var>target</var>.\[\[DefineOwnMetadata\]\](<var>metadataKey</var>, <var>metadataValue</var>, <var>P</var>).
-9. Return [Call][](<var>trap</var>, <var>handler</var>, «<var>metadataKey</var>, <var>target</var>, <var>metadataValue</var>, <var>P</var>»).
+9. Return [Call][](<var>trap</var>, <var>handler</var>, «<var>metadataKey</var>, <var>metadataValue</var>, <var>target</var>, <var>P</var>»).
 
 ### \[\[MetadataKeys\]\] ( P )
 
