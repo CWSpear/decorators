@@ -103,22 +103,25 @@ class C {
 function ParamTypes(...types) {
   return (target, propertyKey) => {
     const symParamTypes = Symbol.for("design:paramtypes");
-    const symProperties = Symbol.for("design:properties");
     if (propertyKey === undefined) {
       target[symParamTypes] = types;
     }
     else {
-      let properties;
+      const symProperties = Symbol.for("design:properties");
+      let properties, property;
       if (Object.prototype.hasOwnProperty.call(target, symProperties)) {
         properties = target[symProperties];
       }
       else {
         properties = target[symProperties] = {};
       }
-      if (!Object.prototype.hasOwnProperty.call(properties, propertyKey)) {
-        properties[propertyKey] = {};
+      if (Object.prototype.hasOwnProperty.call(properties, propertyKey)) {
+        property = properties[propertyKey];
       }
-      properties[symParamTypes] = types;
+      else {
+        property = properties[propertyKey] = {};
+      }
+      property[symParamTypes] = types;
     }
   };
 }
