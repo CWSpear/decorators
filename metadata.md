@@ -47,6 +47,36 @@ class C {
 }
 ```
 
+## Examples
+
+```JavaScript
+// Design-time type annotations
+function Type(type) { return Reflect.metadata("design:type", type); }
+function ParamTypes(...types) { return Reflect.metadata("design:paramtypes", types); }
+function ReturnType(type) { return Reflect.metadata("design:returntype", type); }
+
+// Decorator application
+@ParamTypes(String, Number)
+class C {
+  constructor(text, i) {
+  }
+  
+  @Type(String)
+  get name() { return "foo"; }
+  
+  @Type(Function)
+  @ParamTypes(Number, Number)
+  @ReturnType(Number)
+  add(x, y) {
+    return x + y;
+  }
+}
+
+// Metadata introspection
+let obj = new C("a", 1);
+let paramTypes = Reflect.getMetadata("design:paramtypes", inst, "add"); // [Number, Number]
+```
+
 # Abstract Operations
 
 ## Operations on Objects
