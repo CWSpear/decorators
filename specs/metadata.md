@@ -323,8 +323,8 @@ When the `defineMetadata` function is called with arguments <var>metadataKey</va
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. Let <var>key</var> be **undefined**.
-3. If <var>P</var> is not **undefined**, then
-  1. Set <var>key</var> to be [ToPropertyKey][](<var>P</var>).
+3. If <var>propertyKey</var> is not **undefined**, then
+  1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
 4. return <var>target</var>.\[\[DefineMetadata\]\](<var>metadataKey</var>, <var>metadataValue</var>, <var>key</var>).
 
 ### Reflect.hasMetadata ( metadataKey, target \[, propertyKey\] )
@@ -333,8 +333,8 @@ When the `hasMetadata` function is called with arguments <var>metadataKey</var>,
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. Let <var>key</var> be **undefined**.
-3. If <var>P</var> is not **undefined**, then
-  1. Set <var>key</var> to be [ToPropertyKey][](<var>P</var>).
+3. If <var>propertyKey</var> is not **undefined**, then
+  1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
 4. return <var>target</var>.\[\[HasMetadata\]\](<var>metadataKey</var>, <var>key</var>).
 
 ### Reflect.hasOwnMetadata ( metadataKey, target \[, propertyKey\] )
