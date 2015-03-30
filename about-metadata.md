@@ -95,6 +95,35 @@ class C {
 }
 ```
 
+## Alternatives
+
+* Use properties rather than a separate API.
+  * Obvious downside is that this can be a lot of code:
+```JavaScript
+function ParamTypes(...types) {
+  return (target, propertyKey) => {
+    const symParamTypes = Symbol.for("design:paramtypes");
+    const symProperties = Symbol.for("design:properties");
+    if (propertyKey === undefined) {
+      target[symParamTypes] = types;
+    }
+    else {
+      let properties;
+      if (Object.prototype.hasOwnProperty.call(target, symProperties)) {
+        properties = target[symProperties];
+      }
+      else {
+        properties = target[symProperties] = {};
+      }
+      if (!Object.prototype.hasOwnProperty.call(properties, propertyKey)) {
+        properties[propertyKey] = {};
+      }
+      properties[symParamTypes] = types;
+    }
+  };
+}
+```
+
 ## Notes
 * Though it may seem counterintuitive, the methods on Reflect place the parameters for the metadata key and metadata value before the target or property key. This is due to the fact that the property key is the only optional parameter in the argument list. This also makes the methods easier to curry with Function#bind. This also helps reduce the overall footprint and complexity of a metadata-producing decorator that could target both a class or a property:
 
