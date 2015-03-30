@@ -68,7 +68,7 @@ class C {
   }
   
   @Type(String)
-  get name() { return "foo"; }
+  get name() { return "text"; }
   
   @Type(Function)
   @ParamTypes(Number, Number)
@@ -94,17 +94,17 @@ When the abstract operation GetOrCreateMetadataMap is called with Object <var>O<
   1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
   2. Let <var>metadataMap</var> be **undefined**.
   3. Let <var>succeeded</var> be **true**.
-  4. Let <var>targetMetadata</var> be the value of <var>O</var>'s \[\[Metadata\]\] internal slot.
+  4. Let <var>targetMetadata</var> be the value of <var>O</var>'s \[\[Metadata\]\] [internal slot][].
   5. If <var>targetMetadata</var> is **undefined**, then
     1. If <var>Create</var> is **false**, return **undefined**.
     2. Set <var>targetMetadata</var> to be a newly created **Map** object.
-    3. Set the \[\[Metadata\]\] internal slot of <var>O</var> to <var>targetMetadata</var>.
-  6. Let <var>metadataMap</var> be [Invoke][](<var>targetMetadata</var>, "get", <var>P</var>).
+    3. Set the \[\[Metadata\]\] [internal slot][] of <var>O</var> to <var>targetMetadata</var>.
+  6. Let <var>metadataMap</var> be [Invoke][](<var>targetMetadata</var>, `"get"`, <var>P</var>).
   7. [ReturnIfAbrupt][](<var>metadataMap</var>).
   8. If <var>metadataMap</var> is **undefined**, then
     1. If <var>Create</var> is **false**, return **undefined**.
     2. Set <var>metadataMap</var> to be a newly created **Map** object.
-    3. Let <var>setStatus</var> be [Invoke][](<var>targetMetadata</var>, "set", <var>P</var>, <var>metadataMap</var>).
+    3. Let <var>setStatus</var> be [Invoke][](<var>targetMetadata</var>, `"set"`, <var>P</var>, <var>metadataMap</var>).
     4. [ReturnIfAbrupt][](<var>setStatus</var>).
   9. Return <var>metadataMap</var>.
 
@@ -147,7 +147,7 @@ When the abstract operation OrdinaryHasOwnMetadata is called with [ECMAScript la
 2. Let <var>metadataMap</var> be [GetOrCreateMetadataMap][](<var>O</var>, <var>P</var>, **false**).
 3. [ReturnIfAbrupt][](<var>metadataMap</var>).
 4. If <var>metadataMap</var> is **undefined**, return **false**.
-5. Return [ToBoolean][]([Invoke][](<var>metadataMap</var>, "has", <var>MetadataKey</var>)).
+5. Return [ToBoolean][]([Invoke][](<var>metadataMap</var>, `"has"`, <var>MetadataKey</var>)).
 
 ### \[\[GetMetadata\]\] ( MetadataKey, P )
 
@@ -183,7 +183,7 @@ When the abstract operation OrdinaryGetOwnMetadata is called with [ECMAScript la
 2. Let <var>metadataMap</var> be [GetOrCreateMetadataMap][](<var>O</var>, <var>P</var>, **false**).
 3. [ReturnIfAbrupt][](<var>metadataMap</var>).
 4. If <var>metadataMap</var> is **undefined**, return **undefined**.
-5. Return [Invoke][](<var>metadataMap</var>, "get", <var>MetadataKey</var>).
+5. Return [Invoke][](<var>metadataMap</var>, `"get"`, <var>MetadataKey</var>).
 
 ### \[\[DefineOwnMetadata\]\] ( MetadataKey, MetadataValue, P )
 
@@ -198,7 +198,7 @@ When the abstract operation OrdinaryDefineOwnMetadata is called with [ECMAScript
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>metadataMap</var> be [GetOrCreateMetadataMap][](<var>O</var>, <var>P</var>, **true**).
 3. [ReturnIfAbrupt][](<var>metadataMap</var>).
-4. Return [Invoke][](<var>metadataMap</var>, "set", <var>MetadataKey</var>, <var>MetadataValue</var>).
+4. Return [Invoke][](<var>metadataMap</var>, `"set"`, <var>MetadataKey</var>, <var>MetadataValue</var>).
 
 ### \[\[MetadataKeys\]\] ( P )
 
@@ -222,17 +222,17 @@ When the abstract operation OrdinaryMetadataKeys is called with Object <var>O</v
 10. Let <var>set</var> be a newly created **Set** object.
 11. Let <var>keys</var> be an empty [List][].
 12. For each element <var>key</var> of <var>ownKeys</var>
-  1. Let <var>hasKey</var> be [Invoke][](<var>set</var>, "has", <var>key</var>).
+  1. Let <var>hasKey</var> be [Invoke][](<var>set</var>, `"has"`, <var>key</var>).
   2. [ReturnIfAbrupt][](<var>hasKey</var>).
   3. If <var>hasKey</var> is **false**, then
-    1. Let <var>addStatus</var> be [Invoke][](<var>set</var>, "add", <var>key</var>).
+    1. Let <var>addStatus</var> be [Invoke][](<var>set</var>, `"add"`, <var>key</var>).
     2. [ReturnIfAbrupt][](<var>addStatus</var>).
     3. Append <var>key</var> as an element of <var>keys</var>.
 13. For each element <var>key</var> of <var>parentKeys</var>
-  1. Let <var>hasKey</var> be [Invoke][](<var>set</var>, "has", <var>key</var>).
+  1. Let <var>hasKey</var> be [Invoke][](<var>set</var>, `"has"`, <var>key</var>).
   2. [ReturnIfAbrupt][](<var>hasKey</var>).
   3. If <var>hasKey</var> is **false**, then
-    1. Let <var>addStatus</var> be [Invoke][](<var>set</var>, "add", <var>key</var>).
+    1. Let <var>addStatus</var> be [Invoke][](<var>set</var>, `"add"`, <var>key</var>).
     2. [ReturnIfAbrupt][](<var>addStatus</var>).
     3. Append <var>key</var> as an element of <var>keys</var>.
 14. Return <var>keys</var>.
@@ -252,7 +252,7 @@ When the abstract operation OrdinaryOwnMetadataKeys is called with Object <var>O
 3. [ReturnIfAbrupt][](<var>metadataMap</var>).
 4. Let <var>keys</var> be an empty [List][].
 5. If <var>metadataMap</var> is **undefined**, return <var>keys</var>.
-6. Let <var>keysObj</var> be [Invoke][](<var>metadataMap</var>, "keys").
+6. Let <var>keysObj</var> be [Invoke][](<var>metadataMap</var>, `"keys"`).
 7. [ReturnIfAbrupt][](<var>keysObj</var>).
 8. Let <var>iterator</var> be [GetIterator][](<var>keysObj</var>).
 9. [ReturnIfAbrupt][](<var>iterator</var>).
@@ -273,7 +273,7 @@ When the \[\[DeleteMetadata\]\] internal method of <var>O</var> is called with [
 2. Let <var>metadataMap</var> be [GetOrCreateMetadataMap][](<var>O</var>, <var>P</var>, **false**).
 3. [ReturnIfAbrupt][](<var>metadataMap</var>).
 4. If <var>metadataMap</var> is **undefined**, return **false**.
-5. Return [ToBoolean][]([Invoke][](<var>metadataMap</var>, "delete", <var>MetadataKey</var>)).
+5. Return [ToBoolean][]([Invoke][](<var>metadataMap</var>, `"delete"`, <var>MetadataKey</var>)).
 
 ## Proxy Object Internal Methods and Internal Slots
 
@@ -290,7 +290,7 @@ When the \[\[HasMetadata\]\] internal method of a Proxy exotic object <var>O</va
 7. [ReturnIfAbrupt][](<var>trap</var>).
 8. If <var>trap</var> is **undefined**, then
   1. Return <var>target</var>.\[\[HasMetadata\]\](<var>metadataKey</var>, <var>P</var>).
-9. Return [ToBoolean][]([Call][](<var>trap</var>, <var>handler</var>, «<var>target</var>, <var>metadataKey</var>, <var>P</var>»)).
+9. Return [ToBoolean][]([Call][](<var>trap</var>, <var>handler</var>, «<var>metadataKey</var>, <var>target</var>, <var>P</var>»)).
 
 ### \[\[HasOwnMetadata\]\] ( MetadataKey, P )
 
@@ -305,7 +305,7 @@ When the \[\[HasOwnMetadata\]\] internal method of a Proxy exotic object <var>O<
 7. [ReturnIfAbrupt][](<var>trap</var>).
 8. If <var>trap</var> is **undefined**, then
   1. Return <var>target</var>.\[\[HasOwnMetadata\]\](<var>metadataKey</var>, <var>P</var>).
-9. Return [ToBoolean][]([Call][](<var>trap</var>, <var>handler</var>, «<var>target</var>, <var>metadataKey</var>, <var>P</var>»)).
+9. Return [ToBoolean][]([Call][](<var>trap</var>, <var>handler</var>, «<var>metadataKey</var>, <var>target</var>, <var>P</var>»)).
 
 ### \[\[GetMetadata\]\] ( MetadataKey, P )
 
@@ -320,7 +320,7 @@ When the \[\[GetMatadata\]\] internal method of a Proxy exotic object <var>O</va
 7. [ReturnIfAbrupt][](<var>trap</var>).
 8. If <var>trap</var> is **undefined**, then
   1. Return <var>target</var>.\[\[GetMetadata\]\](<var>metadataKey</var>, <var>P</var>).
-9. Return [Call][](<var>trap</var>, <var>handler</var>, «<var>target</var>, <var>metadataKey</var>, <var>P</var>»).
+9. Return [Call][](<var>trap</var>, <var>handler</var>, «<var>metadataKey</var>, <var>target</var>, <var>P</var>»).
 
 ### \[\[GetOwnMetadata\]\] ( MetadataKey, P, ParamIndex )
 
@@ -335,7 +335,7 @@ When the \[\[GetOwnMetadata\]\] internal method of a Proxy exotic object <var>O<
 7. [ReturnIfAbrupt][](<var>trap</var>).
 8. If <var>trap</var> is **undefined**, then
   1. Return <var>target</var>.\[\[GetOwnMetadata\]\](<var>metadataKey</var>, <var>P</var>).
-9. Return [Call][](<var>trap</var>, <var>handler</var>, «<var>target</var>, <var>metadataKey</var>, <var>P</var>»).
+9. Return [Call][](<var>trap</var>, <var>handler</var>, «<var>metadataKey</var>, <var>target</var>, <var>P</var>»).
 
 ### \[\[DefineOwnMetadata\]\] ( MetadataKey, MetadataValue, P )
 
@@ -350,7 +350,7 @@ When the \[\[DefineOwnMetadata\]\] internal method of a Proxy exotic object <var
 7. [ReturnIfAbrupt][](<var>trap</var>).
 8. If <var>trap</var> is **undefined**, then
   1. Return <var>target</var>.\[\[DefineOwnMetadata\]\](<var>metadataKey</var>, <var>metadataValue</var>, <var>P</var>).
-9. Return [Call][](<var>trap</var>, <var>handler</var>, «<var>target</var>, <var>metadataKey</var>, <var>metadataValue</var>, <var>P</var>»).
+9. Return [Call][](<var>trap</var>, <var>handler</var>, «<var>metadataKey</var>, <var>target</var>, <var>metadataValue</var>, <var>P</var>»).
 
 ### \[\[MetadataKeys\]\] ( P )
 
@@ -397,7 +397,7 @@ When the \[\[DeleteMetadata\]\] internal method of a Proxy exotic object <var>O<
 7. [ReturnIfAbrupt][](<var>trap</var>).
 8. If <var>trap</var> is **undefined**, then
   1. Return <var>target</var>.\[\[DeleteMetadata\]\](<var>metadataKey</var>, <var>P</var>).
-9. Return [ToBoolean][]([Call][](<var>trap</var>, <var>handler</var>, «<var>target</var>, <var>metadataKey</var>, <var>P</var>»)).
+9. Return [ToBoolean][]([Call][](<var>trap</var>, <var>handler</var>, «<var>metadataKey</var>, <var>target</var>, <var>P</var>»)).
 
 # Reflection
 
@@ -407,19 +407,19 @@ This section contains amendments to the Reflect object.
 
 ### Metadata Decorator Functions
 
-A [metadata decorator function][mdf] is an anonymous built-in function that has \[\[MetadataKey\]\] and \[\[MetadataValue\]\] internal slots.
+A [metadata decorator function][mdf] is an anonymous built-in function that has \[\[MetadataKey\]\] and \[\[MetadataValue\]\] [internal slots][internal slot].
 
 When a metadata decorator function <var>F</var> is called with arguments <var>target</var> and <var>propertyKey</var>, the following steps are taken:
 
-1. [Assert][]: <var>F</var> has a \[\[MetadataKey\]\] internal slot whose value is an ECMAScript language value, or *undefined*.
-2. [Assert][]: <var>F</var> has a \[\[MetadataValue\]\] internal slot whose value is an ECMAScript language value, or *undefined*.
+1. [Assert][]: <var>F</var> has a \[\[MetadataKey\]\] [internal slot][] whose value is an ECMAScript language value, or **undefined**.
+2. [Assert][]: <var>F</var> has a \[\[MetadataValue\]\] [internal slot][] whose value is an ECMAScript language value, or **undefined**.
 3. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 4. Let <var>key</var> be **undefined**.
 5. If <var>propertyKey</var> is not **undefined**, then
   1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
 6. [ReturnIfAbrupt][](<var>key</var>).
-7. Let <var>metadataKey</var> be the value of <var>F</var>'s \[\[MetadataKey\]\] internal slot.
-8. Let <var>metadataValue</var> be the value of <var>F</var>'s \[\[MetadataValue\]\] internal slot.
+7. Let <var>metadataKey</var> be the value of <var>F</var>'s \[\[MetadataKey\]\] [internal slot][].
+8. Let <var>metadataValue</var> be the value of <var>F</var>'s \[\[MetadataValue\]\] [internal slot][].
 9. Return <var>target</var>.\[\[DefineMetadata\]\](<var>metadataKey</var>, <var>metadataValue</var>, <var>target</var>, <var>key</var>).
 
 ### Reflect.metadata ( metadataKey, metadataValue )
@@ -427,8 +427,8 @@ When a metadata decorator function <var>F</var> is called with arguments <var>ta
 When the `metadata` function is called with arguments <var>metadataKey</var> and <var>metadataValue</var>, the following steps are taken:
 
 1. Let <var>decorator</var> be a new built-in function object as defined in [Metadata Decorator Functions][mdf].
-2. Set the \[\[MetadataKey\]\] internal slot of <var>decorator</var> to <var>metadataKey</var>.
-3. Set the \[\[MetadataValue\]\] internal slot of <var>decorator</var> to <var>metadataValue</var>.
+2. Set the \[\[MetadataKey\]\] [internal slot][] of <var>decorator</var> to <var>metadataKey</var>.
+3. Set the \[\[MetadataValue\]\] [internal slot][] of <var>decorator</var> to <var>metadataValue</var>.
 4. return <var>decorator</var>.
 
 ### Reflect.defineMetadata ( metadataKey, metadataValue, target, propertyKey )
@@ -523,21 +523,28 @@ When the `deleteMetadata` function is called with arguments <var>metadataKey</va
 [ECMAScript language value]:      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ecmascript-language-types
 [property key]:                   https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-type
 [Completion Record]:              https://people.mozilla.org/~jorendorff/es6-draft.html#sec-completion-record-specification-type
+[internal slot]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-internal-methods-and-internal-slots
+[List]:                           https://people.mozilla.org/~jorendorff/es6-draft.html#sec-list-and-record-specification-type
 [ArrayCreate]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-arraycreate
 [Assert]:                         https://people.mozilla.org/~jorendorff/es6-draft.html#sec-algorithm-conventions
+[Call]:                           https://people.mozilla.org/~jorendorff/es6-draft.html#sec-call
+[CreateArrayFromList]:            https://people.mozilla.org/~jorendorff/es6-draft.html#sec-createarrayfromlist
 [CreateDataPropertyOrThrow]:      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-createdatapropertyorthrow
+[CreateListFromArrayLike]:        https://people.mozilla.org/~jorendorff/es6-draft.html#sec-createlistfromarraylike
+[GetMethod]:                      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-getmethod
 [Get]:                            https://people.mozilla.org/~jorendorff/es6-draft.html#sec-get-o-p
 [Set]:                            https://people.mozilla.org/~jorendorff/es6-draft.html#sec-set-o-p-v-throw
 [GetIterator]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-getiterator
 [Invoke]:                         https://people.mozilla.org/~jorendorff/es6-draft.html#sec-invoke
 [IsPropertyKey]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ispropertykey
-[ToPropertyKey]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-topropertykey
 [IteratorStep]:                   https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorstep
 [IteratorClose]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorclose
 [IteratorValue]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorvalue
 [ReturnIfAbrupt]:                 https://people.mozilla.org/~jorendorff/es6-draft.html#sec-returnifabrupt
 [ToPrimitive]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-toprimitive
+[ToBoolean]:                      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-toboolean
 [ToString]:                       https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tostring
+[ToPropertyKey]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-topropertykey
 [Type]:                           https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ecmascript-data-types-and-values
 [GetOrCreateMetadataMap]:         #getorcreatemetadatamap--o-p-create-
 [OrdinaryDefineOwnMetadata]:      #ordinarydefineownmetadata--metadatakey-metadatavalue-o-p-
