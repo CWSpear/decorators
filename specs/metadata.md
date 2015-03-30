@@ -1,8 +1,12 @@
 # Metadata Reflection API
 
+> NOTE - This section is non-normative.
+
 *A shim for this API can be found here: https://github.com/rbuckton/ReflectDecorators.*
 
 ## Syntax
+
+> NOTE - This section is non-normative.
 
 ```JavaScript
 // define metadata on an object or property
@@ -48,6 +52,8 @@ class C {
 ```
 
 ## Examples
+
+> NOTE - This section is non-normative.
 
 ```JavaScript
 // Design-time type annotations
@@ -316,9 +322,14 @@ When the `metadata` function is called with arguments <var>metadataKey</var> and
 When the `defineMetadata` function is called with arguments <var>metadataKey</var>, <var>metadataValue</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
+3. Let <var>key</var> be **undefined**.
+  2. If <var>P</var> is not **undefined**, then
+    1. Set <var>key</var> to be [ToPropertyKey][](<var>P</var>).
+
 2. return <var>target</var>.\[\[DefineMetadata\]\](<var>metadataKey</var>, <var>metadataValue</var>, <var>propertyKey</var>).
 
 ### Reflect.hasMetadata ( metadataKey, target \[, propertyKey\] )
+
 When the `hasMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
@@ -329,59 +340,80 @@ When the `hasMetadata` function is called with arguments <var>metadataKey</var>,
 When the `hasOwnMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
-2. return <var>target</var>.\[\[HasOwn\]\](<var>metadataKey</var>, <var>propertyKey</var>).
+2. Let <var>key</var> be **undefined**.
+3. If <var>propertyKey</var> is not **undefined**, then
+  1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
+4. return <var>target</var>.\[\[HasOwn\]\](<var>metadataKey</var>, <var>key</var>).
 
 ### Reflect.getMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `getMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
-2. return <var>target</var>.\[\[GetMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
+2. Let <var>key</var> be **undefined**.
+3. If <var>propertyKey</var> is not **undefined**, then
+  1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
+4. return <var>target</var>.\[\[GetMetadata\]\](<var>metadataKey</var>, <var>key</var>).
 
 ### Reflect.getOwnMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `getOwnMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
-2. return <var>target</var>.\[\[GetOwnMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
+2. Let <var>key</var> be **undefined**.
+3. If <var>propertyKey</var> is not **undefined**, then
+  1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
+4. return <var>target</var>.\[\[GetOwnMetadata\]\](<var>metadataKey</var>, <var>key</var>).
 
 ### Reflect.getMetadataKeys ( target \[, propertyKey\] )
 
 When the `getMetadataKeys` function is called with arguments <var>target</var> and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
-2. return <var>target</var>.\[\[GetMetadataKeys\]\](<var>propertyKey</var>).
+2. Let <var>key</var> be **undefined**.
+3. If <var>propertyKey</var> is not **undefined**, then
+  1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
+4. return <var>target</var>.\[\[GetMetadataKeys\]\](<var>key</var>).
 
 ### Reflect.getOwnMetadataKeys ( target \[, propertyKey\] )
 
 When the `getOwnMetadataKeys` function is called with arguments <var>target</var> and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
-2. return <var>target</var>.\[\[GetOwnMetadataKeys\]\](<var>propertyKey</var>).
+2. Let <var>key</var> be **undefined**.
+3. If <var>propertyKey</var> is not **undefined**, then
+  1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
+4. return <var>target</var>.\[\[GetOwnMetadataKeys\]\](<var>key</var>).
 
 ### Reflect.deleteMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `deleteMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
-2. return <var>target</var>.\[\[DeleteMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
+2. Let <var>key</var> be **undefined**.
+3. If <var>propertyKey</var> is not **undefined**, then
+  1. Set <var>key</var> to be [ToPropertyKey][](<var>propertyKey</var>).
+4. return <var>target</var>.\[\[DeleteMetadata\]\](<var>metadataKey</var>, <var>key</var>).
 
 [ECMAScript language value]:      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ecmascript-language-types
 [property key]:                   https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-type
-[ArrayCreate]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-arraycreate                       "ArrayCreate"
-[Assert]:                         https://people.mozilla.org/~jorendorff/es6-draft.html#sec-algorithm-conventions             "Assert"
-[CreateDataPropertyOrThrow]:      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-createdatapropertyorthrow         "CreateDataPropertyOrThrow"
-[Get]:                            https://people.mozilla.org/~jorendorff/es6-draft.html#sec-get-o-p                           "Get"
-[Set]:                            https://people.mozilla.org/~jorendorff/es6-draft.html#sec-set-o-p-v-throw                   "Set"
-[GetIterator]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-getiterator                       "GetIterator"
-[Invoke]:                         https://people.mozilla.org/~jorendorff/es6-draft.html#sec-invoke                            "Invoke"
-[IsPropertyKey]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ispropertykey                     "IsPropertyKey"
-[IteratorStep]:                   https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorstep                      "IteratorStep"
-[IteratorClose]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorclose                     "IteratorClose"
-[IteratorValue]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorvalue                     "IteratorValue"
-[ReturnIfAbrupt]:                 https://people.mozilla.org/~jorendorff/es6-draft.html#sec-returnifabrupt                    "ReturnIfAbrupt"
-[ToString]:                       https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tostring                          "ToString"
-[Type]:                           https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ecmascript-data-types-and-values  "Type"
+[Completion Record]:              https://people.mozilla.org/~jorendorff/es6-draft.html#sec-completion-record-specification-type
+[ArrayCreate]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-arraycreate
+[Assert]:                         https://people.mozilla.org/~jorendorff/es6-draft.html#sec-algorithm-conventions
+[CreateDataPropertyOrThrow]:      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-createdatapropertyorthrow
+[Get]:                            https://people.mozilla.org/~jorendorff/es6-draft.html#sec-get-o-p
+[Set]:                            https://people.mozilla.org/~jorendorff/es6-draft.html#sec-set-o-p-v-throw
+[GetIterator]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-getiterator
+[Invoke]:                         https://people.mozilla.org/~jorendorff/es6-draft.html#sec-invoke
+[IsPropertyKey]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ispropertykey
+[ToPropertyKey]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-topropertykey
+[IteratorStep]:                   https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorstep
+[IteratorClose]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorclose
+[IteratorValue]:                  https://people.mozilla.org/~jorendorff/es6-draft.html#sec-iteratorvalue
+[ReturnIfAbrupt]:                 https://people.mozilla.org/~jorendorff/es6-draft.html#sec-returnifabrupt
+[ToPrimitive]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-toprimitive
+[ToString]:                       https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tostring
+[Type]:                           https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ecmascript-data-types-and-values
 [GetOrCreateMetadataMap]:         #getorcreatemetadatamap--o-p-create-
 [OrdinaryDefineOwnMetadata]:      #ordinarydefineownmetadata--metadatakey-metadatavalue-o-p-
 [OrdinaryGetMetadata]:            #ordinarygetmetadata--metadatakey-o-p-
