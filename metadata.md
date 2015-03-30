@@ -101,7 +101,7 @@ When the abstract operation OrdinaryHasOwnMetadata is called with ECMAScript lan
 
 When the \[\[GetMatadata\]\] internal method of <var>O</var> is called with ECMAScript language value <var>MetadataKey</var> and property key <var>P</var>, the following steps are taken:
 
-1. Return OrdinaryGetMetadata(<var>MetadataKey</var>, <var>O</var>, <var>P</var>).
+1. Return [OrdinaryGetMetadata](#ordinarygetmetadata--metadatakey-o-p-)(<var>MetadataKey</var>, <var>O</var>, <var>P</var>).
 
 ### OrdinaryGetMetadata ( MetadataKey, O, P )
 
