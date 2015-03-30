@@ -1,5 +1,7 @@
 # Metadata Reflection API
 
+*A shim for this API can be found here: https://github.com/rbuckton/ReflectDecorators.*
+
 ## Syntax
 
 ```JavaScript
@@ -51,7 +53,7 @@ class C {
 
 ### GetOrCreateMetadataMap ( O, P, Create )
 
-When the abstract operation GetOrCreateMetadataMap is called with Object <var>O</var>, property key <var>P</var>, and Boolean <var>Create</var> the following steps are taken:
+When the abstract operation GetOrCreateMetadataMap is called with Object <var>O</var>, [property key][] <var>P</var>, and Boolean <var>Create</var> the following steps are taken:
 
   1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
   2. Let <var>metadataMap</var> be **undefined**.
@@ -72,13 +74,13 @@ When the abstract operation GetOrCreateMetadataMap is called with Object <var>O<
 
 ### \[\[HasMetadata\]\] ( MetadataKey, P )
 
-When the \[\[HasMetadata\]\] internal method of <var>O</var> is called with ECMAScript language value <var>MetadataKey</var> and property key <var>P</var>, the following steps are taken:
+When the \[\[HasMetadata\]\] internal method of <var>O</var> is called with [ECMAScript language value][] <var>MetadataKey</var> and [property key][] <var>P</var>, the following steps are taken:
 
   1. Return [OrdinaryHasMetadata][](<var>MetadataKey</var>, <var>O</var>, <var>P</var>).
 
 ### OrdinaryHasMetadata ( MetadataKey, O, P )
 
-When the abstract operation OrdinaryHasMetadata is called with ECMAScript language value <var>MetadataKey</var>, Object <var>O</var>, and property key <var>P</var>, the following steps are taken:
+When the abstract operation OrdinaryHasMetadata is called with [ECMAScript language value][] <var>MetadataKey</var>, Object <var>O</var>, and [property key][] <var>P</var>, the following steps are taken:
 
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>hasOwn</var> be [OrdinaryHasOwnMetadata][](<var>MetadataKey</var>, <var>O</var>, <var>P</var>).
@@ -91,13 +93,13 @@ When the abstract operation OrdinaryHasMetadata is called with ECMAScript langua
 
 ### \[\[HasOwnMetadata\]\] ( MetadataKey, P )
 
-When the \[\[HasOwnMetadata\]\] internal method of <var>O</var> is called with ECMAScript language value <var>MetadataKey</var> and property key <var>P</var>, the following steps are taken:
+When the \[\[HasOwnMetadata\]\] internal method of <var>O</var> is called with [ECMAScript language value][] <var>MetadataKey</var> and [property key][] <var>P</var>, the following steps are taken:
 
 1. Return [OrdinaryHasOwnMetadata][](<var>MetadataKey</var>, <var>O</var>, <var>P</var>).
 
 ### OrdinaryHasOwnMetadata ( MetadataKey, O, P )
 
-When the abstract operation OrdinaryHasOwnMetadata is called with ECMAScript language value <var>MetadataKey</var>, Object <var>O</var>, and property key <var>P</var>, the following steps are taken:
+When the abstract operation OrdinaryHasOwnMetadata is called with [ECMAScript language value][] <var>MetadataKey</var>, Object <var>O</var>, and [property key][] <var>P</var>, the following steps are taken:
 
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>metadataMap</var> be [GetOrCreateMetadataMap][](<var>O</var>, <var>P</var>, **false**).
@@ -108,13 +110,13 @@ When the abstract operation OrdinaryHasOwnMetadata is called with ECMAScript lan
 
 ### \[\[GetMetadata\]\] ( MetadataKey, P )
 
-When the \[\[GetMatadata\]\] internal method of <var>O</var> is called with ECMAScript language value <var>MetadataKey</var> and property key <var>P</var>, the following steps are taken:
+When the \[\[GetMatadata\]\] internal method of <var>O</var> is called with [ECMAScript language value][] <var>MetadataKey</var> and [property key][] <var>P</var>, the following steps are taken:
 
 1. Return [OrdinaryGetMetadata][](<var>MetadataKey</var>, <var>O</var>, <var>P</var>).
 
 ### OrdinaryGetMetadata ( MetadataKey, O, P )
 
-When the abstract operation OrdinaryGetMetadata is called with ECMAScript language value <var>MetadataKey</var>, Object <var>O</var>, and property key <var>P</var>, the following steps are taken:
+When the abstract operation OrdinaryGetMetadata is called with [ECMAScript language value][] <var>MetadataKey</var>, Object <var>O</var>, and [property key][] <var>P</var>, the following steps are taken:
 
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>hasOwn</var> be [OrdinaryHasOwnMetadata][](<var>MetadataKey</var>, <var>O</var>, <var>P</var>).
@@ -128,13 +130,13 @@ When the abstract operation OrdinaryGetMetadata is called with ECMAScript langua
 
 ### \[\[GetOwnMetadata\]\] ( MetadataKey, P, ParamIndex )
 
-When the \[\[GetOwnMetadata\]\] internal method of <var>O</var> is called with ECMAScript language value <var>MetadataKey</var> and property key <var>P</var>, the following steps are taken:
+When the \[\[GetOwnMetadata\]\] internal method of <var>O</var> is called with [ECMAScript language value][] <var>MetadataKey</var> and [property key][] <var>P</var>, the following steps are taken:
 
 1. Return [OrdinaryGetOwnMetadata][](<var>MetadataKey</var>, <var>O</var>, <var>P</var>).
 
 ### OrdinaryGetOwnMetadata ( MetadataKey, O, P )
 
-When the abstract operation OrdinaryGetOwnMetadata is called with ECMAScript language value <var>MetadataKey</var>, Object <var>O</var>, and property key <var>P</var>, the following steps are taken:
+When the abstract operation OrdinaryGetOwnMetadata is called with [ECMAScript language value][] <var>MetadataKey</var>, Object <var>O</var>, and [property key][] <var>P</var>, the following steps are taken:
 
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>metadataMap</var> be [GetOrCreateMetadataMap][](<var>O</var>, <var>P</var>, **false**).
@@ -144,13 +146,13 @@ When the abstract operation OrdinaryGetOwnMetadata is called with ECMAScript lan
 
 ### \[\[DefineOwnMetadata\]\] ( MetadataKey, MetadataValue, P )
 
-When the \[\[DefineOwnMetadata\]\] internal method of <var>O</var> is called with ECMAScript language value <var>MetadataKey</var>, ECMAScript language value <var>MetadataValue</var>, and property key <var>P</var>, the following steps are taken:
+When the \[\[DefineOwnMetadata\]\] internal method of <var>O</var> is called with [ECMAScript language value][] <var>MetadataKey</var>, [ECMAScript language value][] <var>MetadataValue</var>, and [property key][] <var>P</var>, the following steps are taken:
 
 1. Return [OrdinaryDefineOwnMetadata][](<var>MetadataKey</var>, <var>MetadataValue</var>, <var>O</var>, <var>P</var>)
 
 ### OrdinaryDefineOwnMetadata ( MetadataKey, MetadataValue, O, P )
 
-When the abstract operation OrdinaryDefineOwnMetadata is called with ECMAScript language value <var>MetadataKey</var>, ECMAScript language value <var>MetadataValue</var>, Object <var>O</var>, and property key <var>P</var>, the following steps are taken:
+When the abstract operation OrdinaryDefineOwnMetadata is called with [ECMAScript language value][] <var>MetadataKey</var>, [ECMAScript language value][] <var>MetadataValue</var>, Object <var>O</var>, and [property key][] <var>P</var>, the following steps are taken:
 
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>metadataMap</var> be [GetOrCreateMetadataMap][](<var>O</var>, <var>P</var>, **true**).
@@ -159,13 +161,13 @@ When the abstract operation OrdinaryDefineOwnMetadata is called with ECMAScript 
 
 ### \[\[MetadataKeys\]\] ( P )
 
-When the \[\[MetadataKeys\]\] internal method of <var>O</var> is called with property key <var>P</var> the following steps are taken:
+When the \[\[MetadataKeys\]\] internal method of <var>O</var> is called with [property key][] <var>P</var> the following steps are taken:
 
 1. Return [OrdinaryMetadataKeys][](<var>O</var>, <var>P</var>).
 
 ### OrdinaryMetadataKeys ( O, P )
 
-When the abstract operation OrdinaryMetadataKeys is called with Object <var>O</var> and property key <var>P</var> the following steps are taken:
+When the abstract operation OrdinaryMetadataKeys is called with Object <var>O</var> and [property key][] <var>P</var> the following steps are taken:
 
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>ownKeys</var> be [OrdinaryOwnMetadataKeys][](<var>O</var>, <var>P</var>).
@@ -209,13 +211,13 @@ When the abstract operation OrdinaryMetadataKeys is called with Object <var>O</v
 
 ### \[\[OwnMetadataKeys\]\] ( P )
 
-When the \[\[OwnMetadataKeys\]\] internal method of <var>O</var> is called with property key <var>P</var> the following steps are taken:
+When the \[\[OwnMetadataKeys\]\] internal method of <var>O</var> is called with [property key][] <var>P</var> the following steps are taken:
 
 1. Return [OrdinaryOwnMetadataKeys][](<var>O</var>, <var>P</var>).
 
 ### OrdinaryOwnMetadataKeys ( O, P )
 
-When the abstract operation OrdinaryOwnMetadataKeys is called with Object <var>O</var> and property key <var>P</var> the following steps are taken:
+When the abstract operation OrdinaryOwnMetadataKeys is called with Object <var>O</var> and [property key][] <var>P</var> the following steps are taken:
 
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>keys</var> be [ArrayCreate][](0).
@@ -243,7 +245,7 @@ When the abstract operation OrdinaryOwnMetadataKeys is called with Object <var>O
 
 ### \[\[DeleteMetadata\]\]( MetadataKey, P )
 
-When the \[\[DeleteMetadata\]\] internal method of <var>O</var> is called with ECMAScript language value <var>MetadataKey</var> and property key <var>P</var> the following steps are taken:
+When the \[\[DeleteMetadata\]\] internal method of <var>O</var> is called with [ECMAScript language value][] <var>MetadataKey</var> and [property key][] <var>P</var> the following steps are taken:
 
 1. [Assert][]: <var>P</var> is **undefined** or [IsPropertyKey][](<var>P</var>) is **true**.
 2. Let <var>metadataMap</var> be [GetOrCreateMetadataMap][](<var>O</var>, <var>P</var>, **false**).
@@ -256,8 +258,6 @@ When the \[\[DeleteMetadata\]\] internal method of <var>O</var> is called with E
 ## The Reflect Object
 
 This section contains amendments to the Reflect object.
-
-*A shim for this API can be found here: https://github.com/rbuckton/ReflectDecorators.*
 
 ### Metadata Decorator Functions
 
@@ -288,55 +288,56 @@ When the `defineMetadata` function is called with arguments <var>metadataKey</va
 1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
 2. return <var>target</var>.\[\[DefineMetadata\]\](<var>metadataKey</var>, <var>metadataValue</var>, <var>propertyKey</var>).
 
-### Reflect.hasMetadata ( metadataKey, target, propertyKey )
+### Reflect.hasMetadata ( metadataKey, target \[, propertyKey\] )
 When the `hasMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
 2. return <var>target</var>.\[\[HasMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
-### Reflect.hasOwnMetadata ( metadataKey, target, propertyKey )
+### Reflect.hasOwnMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `hasOwnMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
 2. return <var>target</var>.\[\[HasOwn\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
-### Reflect.getMetadata ( metadataKey, target, propertyKey )
+### Reflect.getMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `getMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
 2. return <var>target</var>.\[\[GetMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
-### Reflect.getOwnMetadata ( metadataKey, target, propertyKey )
+### Reflect.getOwnMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `getOwnMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
 2. return <var>target</var>.\[\[GetOwnMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
-### Reflect.getMetadataKeys ( target, propertyKey )
+### Reflect.getMetadataKeys ( target \[, propertyKey\] )
 
 When the `getMetadataKeys` function is called with arguments <var>target</var> and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
 2. return <var>target</var>.\[\[GetMetadataKeys\]\](<var>propertyKey</var>).
 
-### Reflect.getOwnMetadataKeys ( target, propertyKey )
+### Reflect.getOwnMetadataKeys ( target \[, propertyKey\] )
 
 When the `getOwnMetadataKeys` function is called with arguments <var>target</var> and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
 2. return <var>target</var>.\[\[GetOwnMetadataKeys\]\](<var>propertyKey</var>).
 
-### Reflect.deleteMetadata ( metadataKey, target, propertyKey )
+### Reflect.deleteMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `deleteMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
 1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
 2. return <var>target</var>.\[\[DeleteMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
-
+[ECMAScript language value]:      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ecmascript-language-types
+[property key]:                   https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-type
 [ArrayCreate]:                    https://people.mozilla.org/~jorendorff/es6-draft.html#sec-arraycreate                       "ArrayCreate"
 [Assert]:                         https://people.mozilla.org/~jorendorff/es6-draft.html#sec-algorithm-conventions             "Assert"
 [CreateDataPropertyOrThrow]:      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-createdatapropertyorthrow         "CreateDataPropertyOrThrow"
