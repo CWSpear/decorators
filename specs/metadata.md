@@ -277,6 +277,19 @@ When the \[\[DeleteMetadata\]\] internal method of <var>O</var> is called with [
 
 ## Proxy Object Internal Methods and Internal Slots
 
+This proposal adds the following additional proxy handler methods, as an addendum to [Table 30](https://people.mozilla.org/~jorendorff/es6-draft.html#table-30):
+
+| Internal Method           | Handler Method    |
+|---------------------------|-------------------|
+| \[\[HasMetadata\]\]       | `hasMetadata`     |
+| \[\[HasOwnMetadata\]\]    | `hasOwnMetadata`  |
+| \[\[GetMetadata\]\]       | `getMetadata`     |
+| \[\[GetOwnMetadata\]\]    | `getOwnMetadata`  |
+| \[\[MetadataKeys\]\]      | `metadataKeys`    |
+| \[\[OwnMetadataKeys\]\]   | `ownMetadataKeys` |
+| \[\[DefineOwnMetadata\]\] | `defineMetadata`  |
+| \[\[DeleteMetadata\]\]    | `deleteMetadata`  |
+
 ### \[\[HasMetadata\]\] ( MetadataKey, P )
 
 When the \[\[HasMetadata\]\] internal method of a Proxy exotic object <var>O</var> is called with [ECMAScript language value][] <var>MetadataKey</var> and [property key][] <var>P</var>, the following steps are taken:
