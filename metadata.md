@@ -267,8 +267,8 @@ When a metadata decorator function <var>F</var> is called with arguments <var>ta
 
 1. [Assert][]: <var>F</var> has a \[\[MetadataKey\]\] internal slot whose value is an ECMAScript language value, or *undefined*.
 2. [Assert][]: <var>F</var> has a \[\[MetadataValue\]\] internal slot whose value is an ECMAScript language value, or *undefined*.
-3. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
-4. If <var>key</var> is not *undefined* and [IsPropertyKey][](<var>key</var>) is *false*, throw a *TypeError* exception.
+3. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
+4. If <var>key</var> is not *undefined* and [IsPropertyKey][](<var>key</var>) is *false*, throw a **TypeError** exception.
 5. Let <var>metadataKey</var> be the value of <var>F</var>'s \[\[MetadataKey\]\] internal slot.
 6. Let <var>metadataValue</var> be the value of <var>F</var>'s \[\[MetadataValue\]\] internal slot.
 7. Return <var>target</var>.\[\[DefineMetadata\]\](<var>metadataKey</var>, <var>metadataValue</var>, <var>target</var>, <var>key</var>).
@@ -285,55 +285,55 @@ When the `metadata` function is called with arguments <var>metadataKey</var> and
 ### Reflect.defineMetadata ( metadataKey, metadataValue, target, propertyKey )
 When the `defineMetadata` function is called with arguments <var>metadataKey</var>, <var>metadataValue</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
-1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
+1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. return <var>target</var>.\[\[DefineMetadata\]\](<var>metadataKey</var>, <var>metadataValue</var>, <var>propertyKey</var>).
 
 ### Reflect.hasMetadata ( metadataKey, target \[, propertyKey\] )
 When the `hasMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
-1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
+1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. return <var>target</var>.\[\[HasMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
 ### Reflect.hasOwnMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `hasOwnMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
-1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
+1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. return <var>target</var>.\[\[HasOwn\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
 ### Reflect.getMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `getMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
-1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
+1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. return <var>target</var>.\[\[GetMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
 ### Reflect.getOwnMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `getOwnMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
-1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
+1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. return <var>target</var>.\[\[GetOwnMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
 ### Reflect.getMetadataKeys ( target \[, propertyKey\] )
 
 When the `getMetadataKeys` function is called with arguments <var>target</var> and <var>propertyKey</var>, the following steps are taken:
 
-1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
+1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. return <var>target</var>.\[\[GetMetadataKeys\]\](<var>propertyKey</var>).
 
 ### Reflect.getOwnMetadataKeys ( target \[, propertyKey\] )
 
 When the `getOwnMetadataKeys` function is called with arguments <var>target</var> and <var>propertyKey</var>, the following steps are taken:
 
-1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
+1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. return <var>target</var>.\[\[GetOwnMetadataKeys\]\](<var>propertyKey</var>).
 
 ### Reflect.deleteMetadata ( metadataKey, target \[, propertyKey\] )
 
 When the `deleteMetadata` function is called with arguments <var>metadataKey</var>, <var>target</var>, and <var>propertyKey</var>, the following steps are taken:
 
-1. If [Type][](<var>target</var>) is not Object, throw a *TypeError* exception.
+1. If [Type][](<var>target</var>) is not Object, throw a **TypeError** exception.
 2. return <var>target</var>.\[\[DeleteMetadata\]\](<var>metadataKey</var>, <var>propertyKey</var>).
 
 [ECMAScript language value]:      https://people.mozilla.org/~jorendorff/es6-draft.html#sec-ecmascript-language-types
