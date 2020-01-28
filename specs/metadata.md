@@ -79,7 +79,7 @@ class C {
 }
 
 // Metadata introspection
-let obj = new C("a", 1);
+let inst = new C("a", 1);
 let paramTypes = Reflect.getMetadata("design:paramtypes", inst, "add"); // [Number, Number]
 ```
 
